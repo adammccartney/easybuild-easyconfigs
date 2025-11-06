@@ -28,7 +28,9 @@ dependencies = [
 
 # NVHPC needs CUDA to work. This easyconfig uses CUDA bundled in NVHPC
 # The default CUDA version used by NVHPC is the one defined in nvidia-compilers
+# default_cuda_version = '12.6'
 
-# The default Compute Capability used by NVHPC is the one defined in nvidia-compilers (if any)
+# The default Compute Capability used by NVHPC is the one defined in nvidia-compilers
 
+skip_mod_files_sanity_check = True
 moduleclass = 'toolchain'

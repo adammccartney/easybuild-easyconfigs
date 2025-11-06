@@ -20,12 +20,12 @@ checksums = [
     }
 ]
 
-local_gccver = '13.3.0'
+local_gccver = '13.2.0'
 dependencies = [
     ('GCCcore', local_gccver),
-    ('binutils', '2.42', '', ('GCCcore', local_gccver)),
+    ('binutils', '2.40', '', ('GCCcore', local_gccver)),
     # This is necessary to avoid cases where just libnuma.so.1 is present in the system and -lnuma fails
-    ('numactl', '2.0.18', '', ('GCCcore', local_gccver)),
+    ('numactl', '2.0.16', '', ('GCCcore', local_gccver)),
 ]
 
 # nvidia-compilers (NVHPC) needs CUDA to work. This easyconfig uses CUDA bundled in NVHPC
@@ -34,8 +34,12 @@ dependencies = [
 # (see install_components/Linux_x86_64/*/cuda/)
 default_cuda_version = '12.6'
 
-# (optional) Define default CUDA Compute Capability used by all easyconfigs in this toolchain
-# cuda_compute_capabilities = ['5.2', '6.0', '7.0', '7.5', '8.0', '8.6', '9.0']
+# Define default Compute Capability for nvidia-compilers (NVHPC)
+# (only single values supported, not lists of values!)
+# can also be specified via command line with --cuda-compute-capabilities=8.0
+cuda_compute_capabilities = "8.0"
 
 # this bundle serves as a compiler-only toolchain, so it should be marked as compiler (important for HMNS)
 moduleclass = 'compiler'
+
+skip_mod_files_sanity_check = True
